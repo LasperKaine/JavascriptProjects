@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Square Root Calculator</h1>
+    <button id="startButton">Start</button>
+    <div id="results"></div>
+    <script>
+      document
+        .getElementById("startButton")
+        .addEventListener("click", function () {
+          let userConfirmed = confirm("Should I calculate the square root?");
+
+          let resultDiv = document.getElementById("results");
+
+          if (userConfirmed) {
+            let numStr = prompt("Enter a number:");
+
+            let num = parseFloat(numStr);
+
+            if (isNaN(num)) {
+              resultDiv.innerHTML = `<p>Error: Please enter a valid number.</p>`;
+            } else if (num < 0) {
+              resultDiv.innerHTML = `<p>The square root of a negative number is not defined.</p>`;
+            } else {
+              let sqrt = Math.sqrt(num);
+              resultDiv.innerHTML = `<p>The square root of ${num} is ${sqrt.toFixed(
+                4
+              )}.</p>`;
+            }
+          } else {
+            resultDiv.innerHTML = `<p>The square root is not calculated.</p>`;
+          }
+        });
+    </script>
+  </body>
+</html>

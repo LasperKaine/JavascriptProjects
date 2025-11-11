@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Leap Year Range Finder</h1>
+    <button id="findButton">Find Leap Years</button>
+    <div id="results"></div>
+
+    <script>
+      document
+        .getElementById("findButton")
+        .addEventListener("click", function () {
+          let startYearStr = prompt("Enter the start year:");
+          let endYearStr = prompt("Enter the end year:");
+
+          let startYear = parseInt(startYearStr, 10);
+          let endYear = parseInt(endYearStr, 10);
+
+          let resultDiv = document.getElementById("results");
+
+          let leapYears = [];
+          for (let year = startYear; year <= endYear; year++) {
+            if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+              leapYears.push(year); // Add the leap year to our list
+            }
+          }
+
+          let outputHtml = "";
+          if (leapYears.length > 0) {
+            outputHtml =
+              "<p>Leap years between " +
+              startYear +
+              " and " +
+              endYear +
+              ":</p>";
+            outputHtml += "<ul>";
+            for (let i = 0; i < leapYears.length; i++) {
+              outputHtml += "<li>" + leapYears[i] + "</li>";
+            }
+            outputHtml += "</ul>";
+          } else {
+            outputHtml =
+              "<p>There are no leap years between " +
+              startYear +
+              " and " +
+              endYear +
+              ".</p>";
+          }
+
+          resultDiv.innerHTML = outputHtml;
+        });
+    </script>
+  </body>
+</html>

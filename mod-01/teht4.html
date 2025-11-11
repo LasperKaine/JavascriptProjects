@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Sorting hat</h1>
+    <div id="results"></div>
+    <script>
+      let name1 = prompt("Your name: ");
+
+      let houseNumber = Math.floor(Math.random() * 4) + 1;
+      let house;
+
+      switch (houseNumber) {
+        case 1:
+          house = "Gryffindor";
+          break;
+        case 2:
+          house = "Slytherin";
+          break;
+        case 3:
+          house = "Hufflepuff";
+          break;
+        case 4:
+          house = "Ravenclaw";
+          break;
+      }
+
+      let resultDiv = document.getElementById("results");
+      resultDiv.innerHTML = `
+                <p>${name1}, you are ${house}.</p>
+            `;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Prime Number Checker</h1>
+    <button id="checkButton">Check Number</button>
+    <div id="results"></div>
+
+    <script>
+      document
+        .getElementById("checkButton")
+        .addEventListener("click", function () {
+          let numStr = prompt("Enter an integer:");
+
+          let num = parseInt(numStr, 10);
+
+          let resultDiv = document.getElementById("results");
+          let message = "";
+
+          if (isNaN(num)) {
+            message = `Error: "${numStr}" is not a valid integer.`;
+          } else {
+            let isPrime = true;
+
+            if (num < 2) {
+              isPrime = false;
+            } else if (num === 2) {
+              isPrime = true;
+            } else if (num % 2 === 0) {
+              isPrime = false;
+            } else {
+              for (let i = 3; i <= Math.sqrt(num); i += 2) {
+                if (num % i === 0) {
+                  isPrime = false;
+                  break;
+                }
+              }
+            }
+
+            if (isPrime) {
+              message = `${num} is a prime number.`;
+            } else {
+              message = `${num} is not a prime number.`;
+            }
+          }
+
+          resultDiv.innerHTML = `<p>${message}</p>`;
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Dice Probability</h1>
+    <button id="startButton">Start</button>
+    <div id="results"></div>
+
+    <script>
+      document
+        .getElementById("startButton")
+        .addEventListener("click", function () {
+          let numDiceStr = prompt("Enter the number of dice:");
+          let targetSumStr = prompt(
+            "Enter the sum you want to find the probability for:"
+          );
+
+          let numDice = parseInt(numDiceStr, 10);
+          let targetSum = parseInt(targetSumStr, 10);
+
+          let resultDiv = document.getElementById("results");
+
+          const numSimulations = 10000;
+          let hitCount = 0;
+
+          for (let i = 0; i < numSimulations; i++) {
+            let currentSum = 0;
+
+            for (let j = 0; j < numDice; j++) {
+              let roll = Math.floor(Math.random() * 6) + 1;
+              currentSum += roll;
+            }
+
+            if (currentSum === targetSum) {
+              hitCount++;
+            }
+          }
+
+          let probability = (hitCount / numSimulations) * 100;
+
+          resultDiv.innerHTML = `
+                <p>Based on ${numSimulations} simulations:</p>
+                <p>Probability to get sum ${targetSum} with ${numDice} dice is ${probability.toFixed(
+            2
+          )}%</p>
+                <p>(${hitCount} hits out of ${numSimulations} rolls)</p>
+            `;
+        });
+    </script>
+  </body>
+</html>
