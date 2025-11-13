@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Dice Roll Results</h2>
+    <div id="output-container"></div>
+
+    <script>
+      (function () {
+        function rollDice() {
+          return Math.floor(Math.random() * 6) + 1;
+        }
+
+        const outputContainer = document.getElementById("output-container");
+        const unorderedList = document.createElement("ul");
+        outputContainer.appendChild(unorderedList);
+
+        let roll = 0;
+
+        while (roll !== 6) {
+          roll = rollDice();
+
+          const listItem = document.createElement("li");
+          listItem.textContent = `Rolled: ${roll}`;
+          unorderedList.appendChild(listItem);
+
+          if (roll === 6) {
+            const finalMessage = document.createElement("li");
+            finalMessage.innerHTML = "Stopping...";
+            unorderedList.appendChild(finalMessage);
+            break;
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

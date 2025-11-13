@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        const numbers = [];
+
+        for (let i = 0; i < 5; i++) {
+          let numInput;
+          let num;
+
+          while (true) {
+            numInput = prompt(`Enter number ${i + 1}:`);
+
+            if (numInput === null) {
+              console.log("Input cancelled. Script stopped.");
+              return;
+            }
+
+            const trimmedInput = numInput.trim();
+
+            num = parseInt(trimmedInput, 10);
+
+            if (!isNaN(num) && String(num) === trimmedInput) {
+              numbers.push(num);
+              break;
+            } else {
+              console.log("Invalid input. Please enter a whole number.");
+            }
+          }
+        }
+
+        console.log("\nNumbers in reverse order of entry:");
+
+        const n = numbers.length;
+
+        for (let i = n - 1; i >= 0; i--) {
+          console.log(numbers[i]);
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Concatenated String Result:</h2>
+    <p id="output"></p>
+
+    <script>
+      (function () {
+        function concat(stringArray) {
+          let resultString = "";
+
+          for (let i = 0; i < stringArray.length; i++) {
+            resultString += stringArray[i];
+          }
+
+          return resultString;
+        }
+
+        const names = ["Johnny", "DeeDee", "Joey", "Marky"];
+
+        const concatenatedString = concat(names);
+
+        document.getElementById("output").textContent = concatenatedString;
+      })();
+    </script>
+  </body>
+</html>

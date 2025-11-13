@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        const numbers = [];
+
+        while (true) {
+          const numInput = prompt("Enter a number:");
+
+          if (numInput === null) {
+            console.log("Input cancelled. Script stopped.");
+            break;
+          }
+
+          const num = parseFloat(numInput);
+
+          if (isNaN(num)) {
+            console.log("Invalid input. Please enter a valid number.");
+            continue;
+          }
+
+          if (numbers.includes(num)) {
+            console.log(`The number ${num} has already been given.`);
+            console.log("Stopping program.");
+
+            numbers.sort(function (a, b) {
+              return a - b;
+            });
+
+            console.log("All unique numbers given (in ascending order):");
+            for (const n of numbers) {
+              console.log(n);
+            }
+
+            break;
+          } else {
+            numbers.push(num);
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>

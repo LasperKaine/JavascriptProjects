@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div>
+        <h2>Participant List</h2>
+      </div>
+      <div id="output-container"></div>
+    </div>
+
+    <script>
+      (function () {
+        const participants = [];
+        let numParticipants = 0;
+
+        while (true) {
+          const numInput = prompt("How many participants are there?");
+
+          if (numInput === null) {
+            console.log("Input cancelled. Script stopped.");
+            return;
+          }
+
+          numParticipants = parseInt(numInput, 10);
+
+          if (!isNaN(numParticipants) && numParticipants > 0) {
+            break;
+          } else {
+            console.log(
+              "Invalid input. Please enter a positive number (e.g., 3)."
+            );
+          }
+        }
+
+        for (let i = 0; i < numParticipants; i++) {
+          let name = "";
+          while (true) {
+            name = prompt(`Enter the name of participant ${i + 1}:`);
+
+            if (name === null) {
+              console.log("Input cancelled. Script stopped.");
+              return;
+            }
+
+            if (name.trim() !== "") {
+              participants.push(name.trim());
+              break;
+            } else {
+              console.log("Invalid input. Please enter a name.");
+            }
+          }
+        }
+
+        participants.sort();
+
+        const outputContainer = document.getElementById("output-container");
+        const orderedList = document.createElement("ol");
+
+        for (const name of participants) {
+          const listItem = document.createElement("li");
+          listItem.textContent = name;
+          orderedList.appendChild(listItem);
+        }
+
+        const listTitle = document.createElement("h3");
+        listTitle.textContent = "Sorted Participants:";
+
+        outputContainer.innerHTML = "";
+        outputContainer.appendChild(listTitle);
+        outputContainer.appendChild(orderedList);
+      })();
+    </script>
+  </body>
+</html>

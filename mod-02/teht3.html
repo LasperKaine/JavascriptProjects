@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div>
+        <h2>Dog Names</h2>
+      </div>
+      <div id="output-container"></div>
+    </div>
+
+    <script>
+      (function () {
+        const dogNames = [];
+        const numDogs = 6;
+
+        for (let i = 0; i < numDogs; i++) {
+          let name = "";
+          while (true) {
+            name = prompt(`Enter the name of dog ${i + 1}:`);
+
+            if (name === null) {
+              console.log("Input cancelled. Script stopped.");
+              return;
+            }
+
+            if (name.trim() !== "") {
+              dogNames.push(name.trim());
+              break;
+            } else {
+              console.log("Invalid input. Please enter a name.");
+            }
+          }
+        }
+
+        dogNames.sort();
+        dogNames.reverse();
+
+        const outputContainer = document.getElementById("output-container");
+        const unorderedList = document.createElement("ul");
+
+        for (const name of dogNames) {
+          const listItem = document.createElement("li");
+          listItem.textContent = name;
+          unorderedList.appendChild(listItem);
+        }
+
+        const listTitle = document.createElement("h3");
+        listTitle.textContent = "Dogs in reverse alphabetical order:";
+
+        outputContainer.innerHTML = "";
+        outputContainer.appendChild(listTitle);
+        outputContainer.appendChild(unorderedList);
+      })();
+    </script>
+  </body>
+</html>

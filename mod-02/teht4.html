@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        const numbers = [];
+
+        while (true) {
+          const numInput = prompt("Enter a number (0 to stop):");
+
+          if (numInput === null) {
+            console.log("Input cancelled. Script stopped.");
+            return;
+          }
+
+          const num = parseFloat(numInput);
+
+          if (isNaN(num)) {
+            console.log("Invalid input. Please enter a valid number.");
+            continue;
+          }
+
+          if (num === 0) {
+            break;
+          }
+
+          numbers.push(num);
+        }
+
+        numbers.sort(function (a, b) {
+          return b - a;
+        });
+
+        console.log("Numbers from largest to smallest:");
+
+        for (const num of numbers) {
+          console.log(num);
+        }
+      })();
+    </script>
+  </body>
+</html>
